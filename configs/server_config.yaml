@@ -1,0 +1,27 @@
+host: "0.0.0.0"
+port: 8000
+workers: 1
+log_level: "info"
+timeout_seconds: 30
+
+model:
+  model_path: "${MODEL_PATH}"
+  adapter_path: "${ADAPTER_PATH}"
+  device: "cuda"
+  load_in_4bit: true
+  max_new_tokens_default: 256
+  temperature_default: 0.7
+  top_p_default: 0.9
+
+batch_engine:
+  max_batch_size: 8
+  max_wait_ms: 50
+
+cache:
+  redis_url: "${REDIS_URL}"
+  ttl_seconds: 3600
+
+observability:
+  otlp_endpoint: "${OTLP_ENDPOINT}"
+  service_name: "neuralserve"
+  metrics_path: "/metrics"
