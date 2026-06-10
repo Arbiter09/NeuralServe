@@ -1,0 +1,35 @@
+[project]
+name = "neuralserve"
+version = "0.1.0"
+description = "Production LLM fine-tuning and inference serving with LoRA, dynamic batching, and full observability"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "NeuralServe Contributors" }]
+keywords = ["llm", "fine-tuning", "lora", "inference", "serving", "fastapi"]
+
+[project.urls]
+Repository = "https://github.com/Arbiter09/NeuralServe"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+ignore = ["E501"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["training", "serving", "observability"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::UserWarning",
+]
+
+[tool.mypy]
+python_version = "3.10"
+ignore_missing_imports = true
